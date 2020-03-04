@@ -1,40 +1,44 @@
-export function keyCombListener(keys = [], timeout, callback = () => null) {
+export default function keyCombListener(keys = [], timeout = Infinity, callback = () => null) {
     const len = keys.length;
-    if (!keys.length || !timeout) return () => false;
-    let that = {};
+
+    if (!keys.length) 
+        return () => false;
+
+    let status = {};
     const reset = () => {
-        that = {
+        status = {
             idx: 0,
             startTime: null,
             stack: [],
         };
     };
     reset();
+
     return ({ key: pressedKey }) => {
-        if (!that.startTime) {
-            that.startTime = Date.now();
+        if (!status.startTime) {
+            status.startTime = +Date.now();
         }
-        // too long
-        const curTime = Date.now();
-        if (curTime - that.startTime > timeout) {
-            logger(`timeout!`, curTime - that.startTime);
+        
+        const curTime = +Date.now();
+        if (curTime - status.startTime > timeout) {
             reset();
             return false;
         }
-        that.stack.push(pressedKey);
-        if (pressedKey !== keys[that.idx]) {
-            logger(`wrong code`, that.stack);
+        
+        status.stack.push(pressedKey);
+        
+        if (pressedKey !== keys[status.idx]) {
             reset();
             return false;
         }
-        if (that.idx === len - 1) {
-            logger(`done!`, that.stack);
+
+        if (status.idx === len - 1) {
             reset();
             callback();
             return true;
         }
-        that.idx++;
-        logger(`current: `, that.stack);
+        
+        status.idx++;
         return false;
     };
 }
