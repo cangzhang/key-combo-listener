@@ -2,7 +2,23 @@
   "name": "key-comb-listener",
   "version": "1.0.0",
   "description": "👂 for key comb and 🔥",
-  "main": "index.js",
+  "main": "dist/key-comb-listener.js",
+  "min": "dist/key-comb-listener.min.js",
+  "module": "dist/key-comb-listener.esm.js",
+  "browser": "dist/key-comb-listener.umd.js",
   "author": "Al Cheung",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-buble": "^0.21.1",
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "rollup": "^1.32.0",
+    "rollup-plugin-terser": "^5.2.0"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w"
+  },
+  "files": [
+    "dist"
+  ]
 }
