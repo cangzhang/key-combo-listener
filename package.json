@@ -1,0 +1,8 @@
+{
+  "name": "key-comb-listener",
+  "version": "1.0.0",
+  "description": "👂 for key comb and 🔥",
+  "main": "index.js",
+  "author": "alcheung",
+  "license": "MIT"
+}
