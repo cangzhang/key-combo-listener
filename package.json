@@ -23,6 +23,7 @@
     "dev": "rollup -c -w"
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ]
 }
