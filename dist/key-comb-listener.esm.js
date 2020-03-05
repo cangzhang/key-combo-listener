@@ -1,3 +1,22 @@
+var ResultType = {
+    Timeout: "timeout",
+    Mismatch: "mismatch",
+    Incomplete: "incomplete",
+    Done: "done",
+};
+
+var Result = {};
+Result[ResultType.Timeout] = false;
+Result[ResultType.Mismatch] = false;
+Result[ResultType.Incomplete] = false;
+Result[ResultType.Done] = false;
+
+var getResult = function (prop) {
+    var obj;
+
+    return Object.assign({}, Result, ( obj = {}, obj[prop] = true, obj ));
+};
+
 function keyCombListener(keys, timeout, callback) {
     if ( keys === void 0 ) keys = [];
     if ( timeout === void 0 ) timeout = Infinity;
@@ -28,24 +47,23 @@ function keyCombListener(keys, timeout, callback) {
         var curTime = +Date.now();
         if (curTime - status.startTime > timeout) {
             reset();
-            return false;
+            return callback(getResult(ResultType.Timeout));
         }
         
         status.stack.push(pressedKey);
         
         if (pressedKey !== keys[status.idx]) {
             reset();
-            return false;
+            return callback(getResult(ResultType.Mismatch));
         }
 
         if (status.idx === len - 1) {
             reset();
-            callback();
-            return true;
+            return callback(getResult(ResultType.Done));
         }
         
         status.idx++;
-        return false;
+        return callback(getResult(ResultType.Incomplete));
     };
 }
 

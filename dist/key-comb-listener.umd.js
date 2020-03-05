@@ -1,4 +1,23 @@
-(function(g,f){typeof exports==='object'&&typeof module!=='undefined'?module.exports=f():typeof define==='function'&&define.amd?define(f):(g=g||self,g.KeyCombListener=f());}(this,(function(){'use strict';function keyCombListener(keys, timeout, callback) {
+(function(g,f){typeof exports==='object'&&typeof module!=='undefined'?module.exports=f():typeof define==='function'&&define.amd?define(f):(g=g||self,g.KeyCombListener=f());}(this,(function(){'use strict';var ResultType = {
+    Timeout: "timeout",
+    Mismatch: "mismatch",
+    Incomplete: "incomplete",
+    Done: "done",
+};
+
+var Result = {};
+Result[ResultType.Timeout] = false;
+Result[ResultType.Mismatch] = false;
+Result[ResultType.Incomplete] = false;
+Result[ResultType.Done] = false;
+
+var getResult = function (prop) {
+    var obj;
+
+    return Object.assign({}, Result, ( obj = {}, obj[prop] = true, obj ));
+};
+
+function keyCombListener(keys, timeout, callback) {
     if ( keys === void 0 ) keys = [];
     if ( timeout === void 0 ) timeout = Infinity;
     if ( callback === void 0 ) callback = function () { return null; };
@@ -28,23 +47,22 @@
         var curTime = +Date.now();
         if (curTime - status.startTime > timeout) {
             reset();
-            return false;
+            return callback(getResult(ResultType.Timeout));
         }
         
         status.stack.push(pressedKey);
         
         if (pressedKey !== keys[status.idx]) {
             reset();
-            return false;
+            return callback(getResult(ResultType.Mismatch));
         }
 
         if (status.idx === len - 1) {
             reset();
-            callback();
-            return true;
+            return callback(getResult(ResultType.Done));
         }
         
         status.idx++;
-        return false;
+        return callback(getResult(ResultType.Incomplete));
     };
 }return keyCombListener;})));

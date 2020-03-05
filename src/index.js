@@ -1,3 +1,19 @@
+const ResultType = {
+    Timeout: `timeout`,
+    Mismatch: `mismatch`,
+    Incomplete: `incomplete`,
+    Done: `done`,
+}
+
+const Result = {
+    [ResultType.Timeout]: false,
+    [ResultType.Mismatch]: false,
+    [ResultType.Incomplete]: false,
+    [ResultType.Done]: false,
+}
+
+const getResult = prop => Object.assign({}, Result, { [prop]: true });
+
 export default function keyCombListener(keys = [], timeout = Infinity, callback = () => null) {
     const len = keys.length;
 
@@ -22,23 +38,22 @@ export default function keyCombListener(keys = [], timeout = Infinity, callback 
         const curTime = +Date.now();
         if (curTime - status.startTime > timeout) {
             reset();
-            return false;
+            return callback(getResult(ResultType.Timeout));
         }
         
         status.stack.push(pressedKey);
         
         if (pressedKey !== keys[status.idx]) {
             reset();
-            return false;
+            return callback(getResult(ResultType.Mismatch));
         }
 
         if (status.idx === len - 1) {
             reset();
-            callback();
-            return true;
+            return callback(getResult(ResultType.Done));
         }
         
         status.idx++;
-        return false;
+        return callback(getResult(ResultType.Incomplete));
     };
 }
