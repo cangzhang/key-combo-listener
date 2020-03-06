@@ -1,6 +1,6 @@
 {
   "name": "key-comb-listener",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "👂 for key comb and 🔥",
   "main": "dist/key-comb-listener.js",
   "min": "dist/key-comb-listener.min.js",
@@ -9,8 +9,8 @@
   "author": "Al Cheung",
   "license": "MIT",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/cangzhang/key-comb-listener.git"
+    "type": "git",
+    "url": "https://github.com/cangzhang/key-comb-listener.git"
   },
   "devDependencies": {
     "@rollup/plugin-buble": "^0.21.1",
