@@ -21,7 +21,9 @@ Use it like this:
 ```javascript
 import keyCombListener from 'key-comb-listener';
 
-const listener = keyCombListener(['ArrowUp', 'ArrowDown'], Infinity, result => {
+const keyComb = ['ArrowUp', 'ArrowDown'];
+const timeout = 5000;
+const listener = keyCombListener(keyComb, timeout, result => {
     if (result.done) {
         return console.log(`🔥 something!`);
     }
@@ -31,3 +33,15 @@ const listener = keyCombListener(['ArrowUp', 'ArrowDown'], Infinity, result => {
 
 document.addEventListener(`keydown`, listener)
 ```
+
+## Configuration
+
+`key-comb-listener` accepts 3 parameters.
+| Param    | Type       | Default Value |
+|----------|------------|---------------|
+| key comb | string[]   | []            |
+| timeout  | number(ms) | Infinity      |
+| callback | function   | () => null    |
+
+## TODO
+- [ ] typescript support
