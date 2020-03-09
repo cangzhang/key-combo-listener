@@ -28,10 +28,10 @@ const listener = keyCombListener(keyComb, timeout, result => {
         return console.log(`🔥 something!`);
     }
 
-    console.log(result, `keep 👂`)
+    console.log(result, `keep 👂`);
 })
 
-document.addEventListener(`keydown`, listener)
+document.addEventListener(`keydown`, listener);
 ```
 
 ## Configuration

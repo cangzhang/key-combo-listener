@@ -1,6 +1,6 @@
 {
   "name": "key-comb-listener",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "👂 for key comb and 🔥",
   "main": "dist/key-comb-listener.js",
   "min": "dist/key-comb-listener.min.js",
@@ -8,22 +8,31 @@
   "browser": "dist/key-comb-listener.umd.js",
   "author": "Al Cheung",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/cangzhang/key-comb-listener.git"
-  },
+  "repository": "https://github.com/cangzhang/key-comb-listener.git",
   "devDependencies": {
     "@rollup/plugin-buble": "^0.21.1",
     "@rollup/plugin-commonjs": "^11.0.2",
+    "eslint-config-xo": "^0.29.1",
+    "husky": "^4.2.3",
     "rollup": "^1.32.0",
-    "rollup-plugin-terser": "^5.2.0"
+    "rollup-plugin-terser": "^5.2.0",
+    "xo": "^0.27.2"
   },
   "scripts": {
     "build": "rollup -c",
-    "dev": "rollup -c -w"
+    "dev": "rollup -c -w",
+    "test": "xo",
+    "lint": "xo src/* --fix",
+    "precommit": "lint-staged"
   },
   "files": [
     "dist",
     "README.md"
-  ]
+  ],
+  "lint-staged": {
+    "*.{js,ts}": [
+      "yarn lint",
+      "git add"
+    ]
+  }
 }

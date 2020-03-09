@@ -1,59 +1,61 @@
 const ResultType = {
-    Timeout: `timeout`,
-    Mismatch: `mismatch`,
-    Incomplete: `incomplete`,
-    Done: `done`,
-}
+  Timeout: 'timeout',
+  Mismatch: 'mismatch',
+  Incomplete: 'incomplete',
+  Done: 'done'
+};
 
 const Result = {
-    [ResultType.Timeout]: false,
-    [ResultType.Mismatch]: false,
-    [ResultType.Incomplete]: false,
-    [ResultType.Done]: false,
-}
+  [ResultType.Timeout]: false,
+  [ResultType.Mismatch]: false,
+  [ResultType.Incomplete]: false,
+  [ResultType.Done]: false
+};
 
-const getResult = prop => Object.assign({}, Result, { [prop]: true });
+const getResult = prop => Object.assign({}, Result, {[prop]: true});
 
 export default function keyCombListener(keys = [], timeout = Infinity, callback = () => null) {
-    const len = keys.length;
+  const len = keys.length;
 
-    if (!keys.length) 
-        return () => false;
+  if (keys.length > 0) {
+    return () => false;
+  }
 
-    let status = {};
-    const reset = () => {
-        status = {
-            idx: 0,
-            startTime: null,
-            stack: [],
-        };
+  let status = {};
+  const reset = () => {
+    status = {
+      idx: 0,
+      startTime: null,
+      stack: []
     };
-    reset();
+  };
 
-    return ({ key: pressedKey }) => {
-        if (!status.startTime) {
-            status.startTime = +Date.now();
-        }
-        
-        const curTime = +Date.now();
-        if (curTime - status.startTime > timeout) {
-            reset();
-            return callback(getResult(ResultType.Timeout));
-        }
-        
-        status.stack.push(pressedKey);
-        
-        if (pressedKey !== keys[status.idx]) {
-            reset();
-            return callback(getResult(ResultType.Mismatch));
-        }
+  reset();
 
-        if (status.idx === len - 1) {
-            reset();
-            return callback(getResult(ResultType.Done));
-        }
-        
-        status.idx++;
-        return callback(getResult(ResultType.Incomplete));
-    };
+  return ({key: pressedKey}) => {
+    if (!status.startTime) {
+      status.startTime = Number(Date.now());
+    }
+
+    const curTime = Number(Date.now());
+    if (curTime - status.startTime > timeout) {
+      reset();
+      return callback(getResult(ResultType.Timeout));
+    }
+
+    status.stack.push(pressedKey);
+
+    if (pressedKey !== keys[status.idx]) {
+      reset();
+      return callback(getResult(ResultType.Mismatch));
+    }
+
+    if (status.idx === len - 1) {
+      reset();
+      return callback(getResult(ResultType.Done));
+    }
+
+    status.idx++;
+    return callback(getResult(ResultType.Incomplete));
+  };
 }
