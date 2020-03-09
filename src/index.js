@@ -17,7 +17,7 @@ const getResult = prop => Object.assign({}, Result, {[prop]: true});
 export default function keyCombListener(keys = [], timeout = Infinity, callback = () => null) {
   const len = keys.length;
 
-  if (keys.length > 0) {
+  if (keys.length === 0) {
     return () => false;
   }
 

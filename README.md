@@ -28,7 +28,7 @@ const listener = keyCombListener(keyComb, timeout, result => {
         return console.log(`🔥 something!`);
     }
 
-    console.log(result, `keep 👂`);
+    console.log(`keep 👂`, result);
 })
 
 document.addEventListener(`keydown`, listener);
@@ -44,4 +44,4 @@ document.addEventListener(`keydown`, listener);
 | callback | function   | () => null    |
 
 ## TODO
-- [ ] typescript support
+- [x] ~~typescript support~~

@@ -1,19 +1,28 @@
 {
   "name": "key-comb-listener",
-  "version": "0.2.2",
+  "version": "0.3.1",
   "description": "👂 for key comb and 🔥",
+  "author": "Al Cheung",
+  "license": "MIT",
+  "homepage": "https://github.com/cangzhang/key-comb-listener#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cangzhang/key-comb-listener.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cangzhang/key-comb-listener/issues"
+  },
+  "types": "src/index.d.ts",
   "main": "dist/key-comb-listener.js",
   "min": "dist/key-comb-listener.min.js",
   "module": "dist/key-comb-listener.esm.js",
   "browser": "dist/key-comb-listener.umd.js",
-  "author": "Al Cheung",
-  "license": "MIT",
-  "repository": "https://github.com/cangzhang/key-comb-listener.git",
   "devDependencies": {
     "@rollup/plugin-buble": "^0.21.1",
     "@rollup/plugin-commonjs": "^11.0.2",
     "eslint-config-xo": "^0.29.1",
     "husky": "^4.2.3",
+    "lint-staged": "^10.0.8",
     "rollup": "^1.32.0",
     "rollup-plugin-terser": "^5.2.0",
     "xo": "^0.27.2"
@@ -27,12 +36,17 @@
   },
   "files": [
     "dist",
+    "src/index.d.ts",
     "README.md"
   ],
   "lint-staged": {
     "*.{js,ts}": [
-      "yarn lint",
-      "git add"
+      "yarn lint"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
