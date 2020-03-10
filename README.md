@@ -2,6 +2,8 @@
 
 👂 for key comb and 🔥.
 
+With typescript support of course.
+
 ## Installation
 
 With yarn:
