@@ -3,7 +3,7 @@ declare namespace keyComboListener {
     Timeout = 'timeout',
     Mismatch = 'mismatch',
     Incomplete = 'incomplete',
-    Done = 'done',
+    Done = 'done'
   }
 
   interface Result {

@@ -4,7 +4,7 @@ import {terser} from 'rollup-plugin-terser';
 
 import pkg from './package.json';
 
-export default [
+const config = [
   {
     input: 'src/index.js',
     output: {
@@ -26,11 +26,13 @@ export default [
     output: [
       {
         file: pkg.main,
-        format: 'cjs'
+        format: 'cjs',
+        exports: 'auto'
       },
       {
         file: pkg.min,
         format: 'cjs',
+        exports: 'auto',
         plugins: [
           terser()
         ]
@@ -42,3 +44,5 @@ export default [
     ]
   }
 ];
+
+export default config;

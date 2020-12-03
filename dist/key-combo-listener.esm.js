@@ -22,7 +22,7 @@ function keyComboListener(keys, timeout, callback) {
   if ( timeout === void 0 ) timeout = Infinity;
   if ( callback === void 0 ) callback = function () { return null; };
 
-  var len = keys.length;
+  var length = keys.length;
 
   if (keys.length === 0) {
     return function () { return false; };
@@ -59,7 +59,7 @@ function keyComboListener(keys, timeout, callback) {
       return callback(getResult(ResultType.Mismatch));
     }
 
-    if (status.idx === len - 1) {
+    if (status.idx === length - 1) {
       reset();
       return callback(getResult(ResultType.Done));
     }

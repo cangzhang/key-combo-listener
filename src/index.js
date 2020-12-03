@@ -15,7 +15,7 @@ const Result = {
 const getResult = prop => Object.assign({}, Result, {[prop]: true});
 
 export default function keyComboListener(keys = [], timeout = Infinity, callback = () => null) {
-  const len = keys.length;
+  const length = keys.length;
 
   if (keys.length === 0) {
     return () => false;
@@ -50,7 +50,7 @@ export default function keyComboListener(keys = [], timeout = Infinity, callback
       return callback(getResult(ResultType.Mismatch));
     }
 
-    if (status.idx === len - 1) {
+    if (status.idx === length - 1) {
       reset();
       return callback(getResult(ResultType.Done));
     }
