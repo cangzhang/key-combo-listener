@@ -1,16 +1,16 @@
 {
   "name": "key-combo-listener",
-  "version": "1.1.0",
-  "description": "👂 for key comb and 🔥",
+  "version": "1.2.0",
+  "description": "👂 for key comb and 🔥.",
   "author": "Al Cheung",
   "license": "MIT",
-  "homepage": "https://github.com/cangzhang/key-comb-listener#readme",
+  "homepage": "https://github.com/cangzhang/key-combo-listener",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cangzhang/key-comb-listener.git"
+    "url": "git+https://github.com/cangzhang/key-combo-listener.git"
   },
   "bugs": {
-    "url": "https://github.com/cangzhang/key-comb-listener/issues"
+    "url": "https://github.com/cangzhang/key-combo-listener/issues"
   },
   "types": "src/index.d.ts",
   "main": "dist/key-combo-listener.js",
