@@ -1,4 +1,4 @@
-(function(g,f){typeof exports==='object'&&typeof module!=='undefined'?module.exports=f():typeof define==='function'&&define.amd?define(f):(g=g||self,g.KeyCombListener=f());}(this,(function(){'use strict';var ResultType = {
+(function(g,f){typeof exports==='object'&&typeof module!=='undefined'?module.exports=f():typeof define==='function'&&define.amd?define(f):(g=g||self,g.KeyComboListener=f());}(this,(function(){'use strict';var ResultType = {
   Timeout: 'timeout',
   Mismatch: 'mismatch',
   Incomplete: 'incomplete',
@@ -17,7 +17,7 @@ var getResult = function (prop) {
   return Object.assign({}, Result, ( obj = {}, obj[prop] = true, obj ));
 };
 
-function keyCombListener(keys, timeout, callback) {
+function keyComboListener(keys, timeout, callback) {
   if ( keys === void 0 ) keys = [];
   if ( timeout === void 0 ) timeout = Infinity;
   if ( callback === void 0 ) callback = function () { return null; };
@@ -67,4 +67,4 @@ function keyCombListener(keys, timeout, callback) {
     status.idx++;
     return callback(getResult(ResultType.Incomplete));
   };
-}return keyCombListener;})));
+}return keyComboListener;})));

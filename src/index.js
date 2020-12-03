@@ -14,7 +14,7 @@ const Result = {
 
 const getResult = prop => Object.assign({}, Result, {[prop]: true});
 
-export default function keyCombListener(keys = [], timeout = Infinity, callback = () => null) {
+export default function keyComboListener(keys = [], timeout = Infinity, callback = () => null) {
   const len = keys.length;
 
   if (keys.length === 0) {

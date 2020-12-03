@@ -1,5 +1,5 @@
 {
-  "name": "key-comb-listener",
+  "name": "key-combo-listener",
   "version": "1.0.0",
   "description": "👂 for key comb and 🔥",
   "author": "Al Cheung",
@@ -13,10 +13,10 @@
     "url": "https://github.com/cangzhang/key-comb-listener/issues"
   },
   "types": "src/index.d.ts",
-  "main": "dist/key-comb-listener.js",
-  "min": "dist/key-comb-listener.min.js",
-  "module": "dist/key-comb-listener.esm.js",
-  "browser": "dist/key-comb-listener.umd.js",
+  "main": "dist/key-combo-listener.js",
+  "min": "dist/key-combo-listener.min.js",
+  "module": "dist/key-combo-listener.esm.js",
+  "browser": "dist/key-combo-listener.umd.js",
   "devDependencies": {
     "@rollup/plugin-buble": "^0.21.1",
     "@rollup/plugin-commonjs": "^11.0.2",

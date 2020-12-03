@@ -1,4 +1,4 @@
-declare namespace keyCombListener {
+declare namespace keyComboListener {
   enum ResultProps {
     Timeout = 'timeout',
     Mismatch = 'mismatch',
@@ -16,6 +16,6 @@ declare namespace keyCombListener {
     type CallbackFunction = (result: Result) => any;
 }
 
-declare function keyCombListener(keys: string[], timeout: number, callback: keyCombListener.CallbackFunction): (ev: KeyboardEvent) => boolean;
+declare function keyComboListener(keys: string[], timeout: number, callback: keyComboListener.CallbackFunction): (ev: KeyboardEvent) => boolean;
 
-export = keyCombListener;
+export = keyComboListener;

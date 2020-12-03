@@ -1,6 +1,6 @@
-# Key Comb Listener
+# Key Combo Listener
 
-👂 for key comb and 🔥.
+👂 for key combo and 🔥.
 
 With typescript support of course.
 
@@ -8,12 +8,12 @@ With typescript support of course.
 
 With yarn:
 ```
-yarn add key-comb-listener
+yarn add key-combo-listener
 ```
 
 With npm:
 ```
-npm install key-comb-listener --save
+npm install key-combo-listener --save
 ```
 
 ## How to use
@@ -21,11 +21,11 @@ npm install key-comb-listener --save
 Use it like this:
 
 ```javascript
-import keyCombListener from 'key-comb-listener';
+import keyComboListener from 'key-combo-listener';
 
-const keyComb = ['ArrowUp', 'ArrowDown'];
+const keyCombo = ['ArrowUp', 'ArrowDown'];
 const timeout = 5000;
-const listener = keyCombListener(keyComb, timeout, result => {
+const listener = keyComboListener(keyCombo, timeout, result => {
     if (result.done) {
         return console.log(`🔥 something!`);
     }
@@ -38,7 +38,7 @@ document.addEventListener(`keydown`, listener);
 
 ## Configuration
 
-`key-comb-listener` accepts 3 parameters.
+`key-combo-listener` accepts 3 parameters.
 | Param    | Type       | Default Value |
 |----------|------------|---------------|
 | key comb | string[]   | []            |
